@@ -20,6 +20,7 @@ a,button{
     border:black solid 3px;
     font-size: 20px;
     margin-right: 20px;
+    cursor: pointer;
 }
 .videos{
     display:flex;
