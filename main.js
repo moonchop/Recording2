@@ -34,9 +34,13 @@ function stopRecord() {
     //preview종료
     recorder.stop();//녹화종료
 }
+function playRecording(){
+    const recordedBlob = new Blob(recordedChunks,{type:"video/webm"});
+
+}
 
 
 
 recordButton.addEventListener("click", videoStart);
 stopButton.addEventListener("click", stopRecord);
-playButton.addEventListener("click",);
+playButton.addEventListener("click",playRecording);
