@@ -34,8 +34,14 @@ function stopRecord() {
     //preview종료
     recorder.stop();//녹화종료
 }
-function playRecording(){
-    const recordedBlob = new Blob(recordedChunks,{type:"video/webm"});
+function playRecord(){
+    const recordedBlob = new Blob(recorderChunk,{type:"video/webm"});
+    recordingPlayer.src = URL.createObjectURL(recordedBlob);
+    //blob의 객체에 url을 통해해 접근하여, url을 부여할 수 있다.
+    recordingPlayer.play();
+
+    downloadButton.href=recordingPlayer.src;
+    downloadButton.download = `recording_${new Date()}.webm`
 
 }
 
@@ -43,4 +49,4 @@ function playRecording(){
 
 recordButton.addEventListener("click", videoStart);
 stopButton.addEventListener("click", stopRecord);
-playButton.addEventListener("click",playRecording);
+playButton.addEventListener("click",playRecord);
