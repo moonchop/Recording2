@@ -2,7 +2,9 @@
 practice
 
 javascript로 컴퓨터웹캠을 통한 비디오 녹화, 재생, 다운로드 기능을 구현해보았다.(Clone Code)
+
 녹화기능, 종료기능, 재생기능, 다운로드 기능으로 총 4개 파트를 큰 틀로 본다.
+
 ## videoStart(권한허용 및 녹화시작)
 ```
 function videoStart() {
@@ -14,6 +16,7 @@ function videoStart() {
 }
 ```
 navigator.mediaDevices.getUserMedia는 사용자에게 미디어 사용권한을 요청한다. 수락하면, mediastream을 반환한다.(카메라, 비디오, 오디오, 스크린 공유 등을 포함)
+
 접근 성공 후, previewPlayer.srcObject에 stream을 연결시키면 단순히 현재 화면만 뜨게된다.(녹화기능 X)
 
 ## startRecord(녹화기능) 
@@ -27,7 +30,9 @@ function startRecord(stream) {
 }
 ```
 startRecord()는 videoStart()에서 stream을 받아온다. 
+
 null값인 recorder에 MediaRecorder(stream)를 만든다. data가 available되면 recorderChunk(녹화할 내용이 담길 배열)에 e.data를 넣는다.
+
 > dataavailable이벤트는 MediaRecorder가 미디어 데이터를 사용하기 위해 응용 프로그램에 전달하면 시작된다.
 
 ## stopRecord(종료기능)
@@ -53,6 +58,7 @@ function playRecord(){
 }
 ```
 Blob객체를 URL로 바꾸어 recordingPlayer.src(html의 src속성)에 넣어준다. 이는 녹화되었던 video를 화면에 띄울수있다. 
+
 >Blob은 이미지, 사운드, 비디오와 같은 멀티미디어 데이터를 다룰 때 사용한다. argument는 array와 options를 받는다.
 
 ## 알게 된 것
