@@ -19,6 +19,8 @@ navigator.mediaDevices.getUserMedia는 사용자에게 미디어 사용권한을
 
 접근 성공 후, previewPlayer.srcObject에 stream을 연결시키면 단순히 현재 화면만 뜨게된다.(녹화기능 X)
 
+captureStream()은 녹화를 할때 실시간으로 녹화한다.
+
 ## startRecord(녹화기능) 
 녹화하는 기능을 함수로 만들어 videoStart()에서 이용했다.
 ```
