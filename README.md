@@ -1,11 +1,27 @@
-# Recording2
-practice
+# Video-Recording
+Video recording webpage(Clone Coding)
 
-javascript로 컴퓨터웹캠을 통한 비디오 녹화, 재생, 다운로드 기능을 구현해보았다.(Clone Code)
+javascript로 컴퓨터웹캠을 이용한 비디오 녹화, 재생, 다운로드 기능을 구현해보았다.
 
-녹화기능, 종료기능, 재생기능, 다운로드 기능으로 총 4개 파트를 큰 틀로 본다.
+## Preview
+<img src=https://user-images.githubusercontent.com/82392767/218969118-1a3cd489-b376-4de6-b5c8-24660f8cc069.gif width="60%" height="60%"/>
 
-## videoStart(권한허용 및 녹화시작)
+## Usage
+```
+> git clone https://github.com/moonchop/Video-Recording.git
+> cd Video-Recording
+> Open with live server(index.html)
+```
+
+<br/>
+<br/>
+<br/>
+
+## Code description
+
+녹화기능, 종료기능, 재생기능, 다운로드 기능으로 총 4개 파트를 큰 틀로 다.
+
+### videoStart(권한허용 및 녹화시작)
 ```
 function videoStart() {
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
@@ -21,7 +37,7 @@ navigator.mediaDevices.getUserMedia는 사용자에게 미디어 사용권한을
 
 captureStream()은 녹화를 할때 실시간으로 녹화한다.
 
-## startRecord(녹화기능) 
+### startRecord(녹화기능) 
 녹화하는 기능을 함수로 만들어 videoStart()에서 이용했다.
 ```
 function startRecord(stream) {
@@ -37,7 +53,7 @@ null값인 recorder에 MediaRecorder(stream)를 만든다. data가 available되�
 
 > dataavailable이벤트는 MediaRecorder가 미디어 데이터를 사용하기 위해 응용 프로그램에 전달하면 시작된다.
 
-## stopRecord(종료기능)
+### stopRecord(종료기능)
 ```
 function stopRecord() {
     previewPlayer.srcObject.getTracks().forEach(track => track.stop())
@@ -47,7 +63,7 @@ function stopRecord() {
 ```
 previewPlayer.srcObject.getTracks()는 배열의 형태로 반환되므로 forEach로 개별적으로 중지시켜준다.
  
-## playRecord(재생기능&다운로드)
+### playRecord(재생기능&다운로드)
 ```
 function playRecord(){
     const recordedBlob = new Blob(recorderChunk,{type:"video/webm"});
@@ -63,7 +79,7 @@ Blob객체를 URL로 바꾸어 recordingPlayer.src(html의 src속성)에 넣어�
 
 >Blob은 이미지, 사운드, 비디오와 같은 멀티미디어 데이터를 다룰 때 사용한다. argument는 array와 options를 받는다.
 
-## 알게 된 것
+## Learned
 ### 1. Blob createObjectURL()
  URL.createObjectURL() 메소드는 주어진 객체를 가리키는 URL을 DOMString으로 변환하는 기능을 한다. 해당 url은 window 창이 사라지면 함께 사라진다. 다른 window에서 재 사용이 불가능하다.
 
